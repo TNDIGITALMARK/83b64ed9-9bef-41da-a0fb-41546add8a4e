@@ -1,3 +1,5 @@
+'use client';
+
 export const dynamic = 'force-dynamic';
 
 import Header from '@/components/Header';
@@ -6,6 +8,9 @@ import PlanCard from '@/components/PlanCard';
 import SalonSidebar from '@/components/SalonSidebar';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import Footer from '@/components/Footer';
+import SchedulingSection from '@/components/SchedulingSection';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Calendar, CreditCard } from 'lucide-react';
 
 const SUBSCRIPTION_PLANS = [
   {
@@ -54,32 +59,62 @@ export default function Home() {
       <main>
         <HeroSection />
 
-        {/* Plans Section */}
+        {/* Plans and Scheduling Section with Tabs */}
         <section id="planos" className="w-full max-w-7xl mx-auto px-6 py-12">
-          <div className="grid lg:grid-cols-[1fr_300px] gap-8">
-            {/* Plans Grid */}
-            <div>
-              <h2 className="text-white text-3xl md:text-4xl font-bold text-center mb-12">
-                Escolha seu Plano Ideal
-              </h2>
+          <Tabs defaultValue="plans" className="w-full">
+            {/* Tab Navigation */}
+            <div className="flex justify-center mb-8">
+              <TabsList className="bg-white/20 backdrop-blur-sm p-1.5 rounded-2xl shadow-lg h-auto">
+                <TabsTrigger
+                  value="plans"
+                  className="px-6 py-3 rounded-xl text-base font-semibold transition-all data-[state=active]:bg-white data-[state=active]:text-purple-600 data-[state=active]:shadow-md text-white/90 hover:text-white flex items-center gap-2"
+                >
+                  <CreditCard size={18} />
+                  Planos de Assinatura
+                </TabsTrigger>
+                <TabsTrigger
+                  value="scheduling"
+                  className="px-6 py-3 rounded-xl text-base font-semibold transition-all data-[state=active]:bg-white data-[state=active]:text-purple-600 data-[state=active]:shadow-md text-white/90 hover:text-white flex items-center gap-2"
+                >
+                  <Calendar size={18} />
+                  Agendar Horário
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
-                {SUBSCRIPTION_PLANS.map((plan, index) => (
-                  <PlanCard key={index} {...plan} />
-                ))}
+            {/* Plans Tab Content */}
+            <TabsContent value="plans" className="mt-0">
+              <div className="grid lg:grid-cols-[1fr_300px] gap-8">
+                {/* Plans Grid */}
+                <div>
+                  <h2 className="text-white text-3xl md:text-4xl font-bold text-center mb-12">
+                    Escolha seu Plano Ideal
+                  </h2>
+
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {SUBSCRIPTION_PLANS.map((plan, index) => (
+                      <PlanCard key={index} {...plan} />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Salon Sidebar */}
+                <div className="hidden lg:block">
+                  <SalonSidebar />
+                </div>
               </div>
-            </div>
 
-            {/* Salon Sidebar */}
-            <div className="hidden lg:block">
-              <SalonSidebar />
-            </div>
-          </div>
+              {/* Mobile Salon Section */}
+              <div className="lg:hidden mt-12">
+                <SalonSidebar />
+              </div>
+            </TabsContent>
 
-          {/* Mobile Salon Section */}
-          <div className="lg:hidden mt-12">
-            <SalonSidebar />
-          </div>
+            {/* Scheduling Tab Content */}
+            <TabsContent value="scheduling" className="mt-0">
+              <SchedulingSection />
+            </TabsContent>
+          </Tabs>
         </section>
 
         {/* Testimonials Section */}
