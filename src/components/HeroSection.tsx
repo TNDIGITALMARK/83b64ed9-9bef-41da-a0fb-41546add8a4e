@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Scissors, Sparkles } from 'lucide-react';
 
 export default function HeroSection() {
@@ -24,17 +23,13 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* Hero Image */}
+          {/* Hero Visual Element */}
           <div className="relative">
-            <div className="rounded-3xl overflow-hidden shadow-xl">
-              <Image
-                src="/generated/hero-beauty-treatment.png"
-                alt="Tratamento de beleza profissional"
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover"
-                priority
-              />
+            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 flex items-center justify-center shadow-xl">
+              <div className="text-center space-y-4">
+                <Sparkles className="text-amber-400 mx-auto" size={80} strokeWidth={1.5} />
+                <p className="text-white/80 text-lg font-medium">Seu momento de beleza começa aqui</p>
+              </div>
             </div>
           </div>
         </div>
