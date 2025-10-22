@@ -5,6 +5,7 @@ import { ReactNode, ComponentType } from 'react'
 
 // Utility for safely loading browser-only components
 // This prevents SSR crashes when components use window, navigator, localStorage, etc.
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export function createClientSafeComponent<P = {}>(
   loader: () => Promise<{ default: ComponentType<P> }>,
   fallback?: ReactNode

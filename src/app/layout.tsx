@@ -37,6 +37,7 @@ export default function RootLayout({
         {(process.env.NODE_ENV === 'development' ||
           process.env.NEXT_PUBLIC_ENABLE_PHOENIX_EDITOR === 'true') && (
           <>
+            {/* eslint-disable-next-line @next/next/no-css-tags */}
             <link rel="stylesheet" href="/phoenix-editor/helper.css?v=1761165977670" />
             <script
               src="/phoenix-editor/sourceMapTracker.js?v=1761165977670"
