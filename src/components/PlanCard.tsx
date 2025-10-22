@@ -1,4 +1,8 @@
+'use client';
+
+import { useState } from 'react';
 import { Crown, Check } from 'lucide-react';
+import PaymentModal from './PaymentModal';
 
 interface PlanCardProps {
   name: string;
@@ -9,7 +13,10 @@ interface PlanCardProps {
 }
 
 export default function PlanCard({ name, price, services, savings, featured = false }: PlanCardProps) {
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+
   return (
+    <>
     <div
       className={`bg-white rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full
         ${featured ? 'border-2 border-amber-500 transform md:scale-105' : 'border border-gray-100'}`}
@@ -51,11 +58,21 @@ export default function PlanCard({ name, price, services, savings, featured = fa
 
       {/* Subscribe Button */}
       <button
+        onClick={() => setIsPaymentModalOpen(true)}
         className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full
                    transition-all duration-300 gold-button-glow shadow-md hover:shadow-lg"
       >
         Assinar Já
       </button>
     </div>
+
+    {/* Payment Modal */}
+    <PaymentModal
+      isOpen={isPaymentModalOpen}
+      onClose={() => setIsPaymentModalOpen(false)}
+      planName={name}
+      planPrice={price}
+    />
+    </>
   );
 }
