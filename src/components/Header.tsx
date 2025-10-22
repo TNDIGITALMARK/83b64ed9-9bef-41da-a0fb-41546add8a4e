@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -11,8 +12,15 @@ export default function Header() {
     <header className="w-full max-w-7xl mx-auto px-6 py-4">
       <div className="bg-white rounded-2xl shadow-md px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="logo-text text-3xl hover:opacity-80 transition-opacity">
-          GlamPass
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <Image
+            src="/logo.png"
+            alt="GlamPass Logo"
+            width={120}
+            height={120}
+            className="h-16 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}

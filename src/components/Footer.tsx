@@ -1,5 +1,6 @@
 import { Instagram, Facebook, Twitter, Phone, Mail } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -9,7 +10,15 @@ export default function Footer() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Company Info */}
             <div>
-              <h3 className="logo-text text-3xl mb-4">GlamPass</h3>
+              <div className="mb-4">
+                <Image
+                  src="/logo.png"
+                  alt="GlamPass Logo"
+                  width={150}
+                  height={150}
+                  className="h-20 w-auto"
+                />
+              </div>
               <p className="text-white/80 text-sm">
                 Conectando você aos melhores salões de beleza com planos mensais acessíveis.
               </p>

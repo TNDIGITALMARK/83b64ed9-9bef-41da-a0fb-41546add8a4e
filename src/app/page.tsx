@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import PlanCard from '@/components/PlanCard';
 import SalonSidebar from '@/components/SalonSidebar';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import Footer from '@/components/Footer';
 
 const SUBSCRIPTION_PLANS = [
@@ -80,6 +81,9 @@ export default function Home() {
             <SalonSidebar />
           </div>
         </section>
+
+        {/* Testimonials Section */}
+        <TestimonialsSection />
 
         {/* Contact Section */}
         <section id="contato" className="w-full max-w-7xl mx-auto px-6 py-12">
